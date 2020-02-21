@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html lang = "en">
+<head>
+<meta charset="UTF-8">
+<title>Activity 5.1</title>
+</head>
+
+<body>
+    
+<script>
+     
+let apiEndpoint = "https://api.nasa.gov/planetary/apod?api_key=gDPr6yWSoO1UeSK8jtYZeHyyusKLHiqrDesdPZfR";
+fetch(apiEndpoint)
+.then(response => {return response.json()})
+.then(json => {
+    
+    let h1 = document.createElement("h1");
+    h1.textContent = json.title;
+    document.body.append(h1);
+    
+    let img = document.createElement("img"); 
+    img.setAttribute("src", json.hdurl);
+    document.body.append(img);
+    
+    let p = document.createElement("p");
+    p.textContent = json.explanation;
+    document.body.append(p);
+})
+    
+</script>
+</body>
+
+</html> 
+
+

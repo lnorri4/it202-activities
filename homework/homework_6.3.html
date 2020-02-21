@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+    
+        <title>Canvas Demo</title>
+    </head>
+    <body>
+        <script>
+            function makeL(){     
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+                ctx.beginPath();
+                ctx.strokeStyle = "#FF0000";
+                ctx.lineWidth = 15;
+                ctx.moveTo(10,10);
+                ctx.lineTo(10,90);
+                ctx.lineTo(50,90);
+                ctx.stroke();
+            }
+        </script>
+        
+        <script>
+            function makeSquare(){     
+                var p = document.getElementById("myCanvas");
+                var dtx = p.getContext("2d");
+                dtx.beginPath();
+                dtx.strockStyle = "#FFFFFF";
+                dtx.lineWidth = 1;
+                dtx.moveTo(150,10);
+                dtx.lineTo(150,50);
+                dtx.lineTo(190,50);
+                dtx.lineTo(190,10);
+                dtx.lineTo(150,10);
+                dtx.stroke();
+                dtx.fillStyle = "blue";
+                dtx.fill();
+            }
+        </script>
+        <canvas id="myCanvas" width="200" height="200" style="border:1px solid #ff0000;">
+        </canvas>   
+        
+        <script>
+        makeL();
+        makeSquare();
+        var r = document.getElementById("myCanvas");
+        var etx = r.getContext("2d");
+        etx.font = "30px Arial";
+        etx.fillText("676146513", 1, 190); 
+        </script>       
+        
+    </body>
+</html>
