@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+          <title>Dexie</title>
+    </head>
+    
+<body>
+<canvas id="myCanvas"></canvas>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+    
+let player = {x:100, y:100, radius: 10};
+    
+const draw = () => {
+    
+    ctx.clearRect(0, 0, c.width, c.height); 
+    
+    player["x"] += 1;
+    
+    if (player["x"] > c.width + player["radius"]){
+        player["x"] = -player["radius"];
+    }
+    
+    ctx.beginPath();
+    ctx.arc(player["x"],player["y"],player["radius"], 0, Math.PI * 2);
+    
+    ctx.closePath();
+    
+    ctx.fill();
+    window.requestAnimationFrame(draw);    
+}    
+    
+draw();
+</script> 
+
+</body>
+</html>
