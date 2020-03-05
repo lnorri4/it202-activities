@@ -39,10 +39,14 @@
         </canvas>   
         
         <script>
-        makeL();
-        makeSquare();
         var r = document.getElementById("myCanvas");
         var etx = r.getContext("2d");
+        etx.beginPath();
+        etx.rect(0,0,200,200);
+        etx.fillstyle = "green";
+        etx.fill();
+        makeL();
+        makeSquare();
         etx.font = "30px Arial";
         etx.fillText("676146513", 1, 190); 
         </script>       

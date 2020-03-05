@@ -7,25 +7,50 @@
     
 <body>
 <canvas id="myCanvas"></canvas>
-<script>
+   
+    
+<script> 
+    
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
     
-let player = {x:100, y:100, radius: 10};
+let player = {x:100, y:125, radius: 10};
+let player2 = {x:100, y:75, radius: 10};
+let player3 = {x:75, y:100, radius: 10};
+let player4 = {x:125, y:100, radius: 10};
+
+
     
 const draw = () => {
     
     ctx.clearRect(0, 0, c.width, c.height); 
     
-    player["x"] += 1;
+    player["x"] -= 1;  
+    player2["x"] += 1;
+    player3["y"] += 1;
+    player4["y"] -= 1;
     
-    if (player["x"] > c.width + player["radius"]){
-        player["x"] = -player["radius"];
+    if(-player["radius"] > player["x"]){
+        player["x"] = player["radius"] + c.width;
+    }
+    
+    if(player2["x"] > c.width + player2["radius"]){
+        player2["x"] = -player2["radius"];
+    }
+    
+    if(player3["y"] > c.height + player3["radius"]){
+        player3["y"] = -player3["radius"];
+    }
+        
+    if(-player4["radius"] > player4["y"]){
+        player4["y"] = player4["radius"] + c.height;
     }
     
     ctx.beginPath();
     ctx.arc(player["x"],player["y"],player["radius"], 0, Math.PI * 2);
-    
+    ctx.arc(player2["x"],player2["y"],player2["radius"], 0, Math.PI * 2); 
+    ctx.arc(player3["x"],player3["y"],player3["radius"], 0, Math.PI * 2);
+    ctx.arc(player4["x"],player4["y"],player4["radius"], 0, Math.PI * 2);
     ctx.closePath();
     
     ctx.fill();
