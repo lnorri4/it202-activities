@@ -23,30 +23,33 @@
       <label for="item">Enter a new item:</label>
       <input type="text" name="item" id="item">
       <button id = "submit">Add item</button>
-	  <button id = "unsubmit">Remove item</button>
+	  <!--<button id = "unsubmit">Remove item</button>-->
 	  <!--<li id = "break"></li>-->
     </div>
 	  
-	 
-
     <ul id = "item_input"></ul>
 	  
     <script>		
-		document.querySelector("#submit").addEventListener("click", add = (name) => {
+			let list = document.querySelector("ul");
+			document.querySelector("#submit").addEventListener("click", add = (name) => {
 			let display = document.createElement("LI");
-			//let dbutton = document.createElement("#unsubmit");
+			let dspan = document.createElement("span");
+			let dbutton = document.createElement("button");
+			dbutton.textContent = "unsubmit";
 			let displaytext = document.createTextNode(document.querySelector("#item").value);
 			display.appendChild(displaytext);
     		document.querySelector("#item_input").appendChild(display);
-			//document.querySelector("#item_input").appendChild( <span id = "Bold" style = "font-weight:bold"></span>);	
-			//document.querySelector("#item_input").appendChild(dbutton);	
+			dspan.appendChild(display);
+			display.appendChild(dbutton);
+			list.appendChild(dspan);
+			dbutton.addEventListener("click", remove = (name) => {
+  			let e = document.querySelector("ul"); 
+			e.removeChild(dspan);
+		});
 		});
 		
-		document.querySelector("#unsubmit").addEventListener("click", remove = (name) => {
-  			let e = document.querySelector("ul"); 
-			let child = e.lastElementChild;  
-			e.removeChild(child);
-		});
+		
+		
     </script>
   </body>
 </html>
