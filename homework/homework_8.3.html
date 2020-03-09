@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button id = "submit">Add item</button>
+	  <button id = "unsubmit">Remove item</button>
+	  <!--<li id = "break"></li>-->
+    </div>
+	  
+	 
+
+    <ul id = "item_input"></ul>
+	  
+    <script>		
+		document.querySelector("#submit").addEventListener("click", add = (name) => {
+			let display = document.createElement("LI");
+			//let dbutton = document.createElement("#unsubmit");
+			let displaytext = document.createTextNode(document.querySelector("#item").value);
+			display.appendChild(displaytext);
+    		document.querySelector("#item_input").appendChild(display);
+			//document.querySelector("#item_input").appendChild( <span id = "Bold" style = "font-weight:bold"></span>);	
+			//document.querySelector("#item_input").appendChild(dbutton);	
+		});
+		
+		document.querySelector("#unsubmit").addEventListener("click", remove = (name) => {
+  			let e = document.querySelector("ul"); 
+			let child = e.lastElementChild;  
+			e.removeChild(child);
+		});
+    </script>
+  </body>
+</html>
