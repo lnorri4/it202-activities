@@ -15,6 +15,11 @@
 
     body {margin: 0;}
     main {margin-left: 8px;}
+	  
+	.view { display: none; }
+	  
+	 
+	  
   </style>
 
   </head>
@@ -23,17 +28,17 @@
     <aside class="mdc-drawer mdc-drawer--modal">
     <div class="mdc-drawer__content">
       <nav class="mdc-list">
-        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
-          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-          <span class="mdc-list-item__text">Inbox</span>
+        <a class="mdc-list-item mdc-list-item--activated" href="#Home" aria-current="page">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">compare_arrows</i>
+          <span class="mdc-list-item__text">Home</span>
         </a>
-        <a class="mdc-list-item" href="#">
+        <a class="mdc-list-item" href="#Data">
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-          <span class="mdc-list-item__text">Outgoing</span>
+          <span class="mdc-list-item__text">Data</span>
         </a>
-        <a class="mdc-list-item" href="#">
+        <a class="mdc-list-item" href="#About">
           <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-          <span class="mdc-list-item__text">Drafts</span>
+          <span class="mdc-list-item__text">About</span>
         </a>
       </nav>
     </div>
@@ -58,27 +63,47 @@
 
 
   <main class="mdc-top-app-bar--fixed-adjust">
+	<div class = "view" id = "Home">Home</div>
+	<div class = "view" id = "Data">Data</div>
+	<div class = "view" id = "About">About</div>	
 
-    <button class="mdc-button foo-button mdc-button--raised">
+    <!--<button class="mdc-button foo-button mdc-button--raised">
     <div class="mdc-button__ripple"></div>
-    <span class="mdc-button__label">Button</span>
-  </button>
+    <span class="mdc-button__label">Button</span>-->	
+  <!--</button>-->
   </main>
 
 
   <script>
-    mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+    //mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
 
     mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('header.mdc-top-app-bar'));
 
     const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 
-
+	const hideViews = () => {
+		document.querySelectorAll("div.view").forEach( (item) => {
+			item.style.display = "none";
+		}) 
+	}
+	  
     document.querySelector(".mdc-top-app-bar__navigation-icon")
       .addEventListener("click", 
           (e) => {drawer.open = true;}
       );
+	  
+	document.querySelectorAll('aside.mdc-drawer a.mdc-list-item').
+		forEach(item => {
+		
+  		item.addEventListener('click', event => {
+			
+		hideViews();
+		let target = item.getAttribute("href");
+		document.querySelector(target).style.display = "block";	
+		drawer.open = "false";
+    	//handle click
+  		})
+	})  
     </script>
   </body>
 </html>
-	
